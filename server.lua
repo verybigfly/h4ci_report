@@ -4,10 +4,10 @@ TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
 
 
 local reportadmin = {
-    'steam:11000011cdb928a',
-    'steam:11000013c0000ec',
-    'steam:11000013c0000ec',
-    'steam:11000013c0000ec'
+    'steam:110000112b1631f',
+    'steam:11000010aa3c7ec',
+    'steam:110000102a520b4',
+    'steam:11000010998e39e'
 }
 
 function reportadminok(player)
@@ -30,8 +30,7 @@ AddEventHandler('checkreportadmin', function()
 	end
 end)
 
-print("Menu report par H4ci")
-print("https://github.com/H4ci/")
+print("Menu report par Amernia-Life")
 
 ESX.RegisterServerCallback('h4ci_report:affichereport', function(source, cb, plate)
     local xPlayer = ESX.GetPlayerFromId(source)

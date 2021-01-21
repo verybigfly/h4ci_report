@@ -42,6 +42,9 @@ Citizen.CreateThread(function()
 
                 if nameResults == nil or nameResults == "" then
                     TriggerEvent('chatMessage', "Report", {255, 0, 0}, "Vous n'avez pas saisi de nom")
+				elseif
+					reasonResults == nil or reasonResults == "" then
+					TriggerEvent('chatMessage', "Report", {255, 0, 0}, "Votre raison n'est pas valide")
                 else
                     TriggerEvent('chatMessage', "Report", {0, 255, 0}, "Votre report a été envoyé contre ".. nameResults .. " pour " .. reasonResults.."")
                     TriggerServerEvent('h4ci_report:ajoutreport', typereport, playerName, nameResults, reasonResults)
@@ -49,23 +52,27 @@ Citizen.CreateThread(function()
 
                 end
             end)
-            RageUI.Button("🤖 Appeller un admin", nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
+            RageUI.Button("🤖 Demande d'aide", nil, {RightLabel = "→→→"}, true, function(Hovered, Active, Selected)
                 if (Selected) then
                     
                 local reasonResults = KeyboardInput("Raison du Report: ", "", 200)
 
                     local playerName = GetPlayerName(PlayerId())
                     local typereport = "Appel admin"
-                    local nameResults = "Appel Admin"
+                    local nameResults = "Demande d'aide"
 
-                    TriggerEvent('chatMessage', "Appel admin", {0, 255, 0}, "Votre appel admin a été envoyé pour " .. reasonResults..".")
+				if reasonResults == nil or reasonResults == "" then
+					TriggerEvent('chatMessage', "Demande d'aide", {255, 0, 0}, "Votre raison n'est pas valide")
+				else
+					TriggerEvent('chatMessage', "Demande d'aide", {0, 255, 0}, "Votre demande d'aide a été envoyé pour " .. reasonResults.."")
                     TriggerServerEvent('h4ci_report:ajoutreport', typereport, playerName, nameResults, reasonResults)
+					end
 
                 end
             end)
             
             if reportadmingroup == true then 
-                RageUI.Button("👩‍💻 Liste report", "Pour voir la liste des reports", {RightLabel = "→→→"},true, function()
+                RageUI.Button("👩‍💻 Liste des report", "Pour voir la liste des reports", {RightLabel = "→→→"},true, function()
             end, RMenu:Get('report', 'lister'))
             end
 
